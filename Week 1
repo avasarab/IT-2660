@@ -1,0 +1,88 @@
+//import java.util.*;
+/*
+ * IT-2660 - Lab 1
+ * Student Name: Allison Vasarab
+ */
+
+public class Main {
+  public static void main(String[] args) {
+    System.out.println("hello, world!");
+
+    System.out.println("Increment test: " + Lab1.increment(1));
+
+    int[] values = {5, 9, 3, 12, 7, 3, 11, 5};
+
+    System.out.println("Array in order: ");
+    int i = 0;
+    while (i < values.length) {
+      System.out.print(values[i] + " ");
+      i++;
+    }
+    System.out.println();
+
+    System.out.println("Array in reverse: ");
+    for (int j = values.length - 1; j >= 0; j--) {
+      System.out.print(values[j] + " ");
+    }
+    System.out.println();
+
+    System.out.println("First value: " + values[0]);
+    System.out.println("Last value: " + values[values.length - 1]);
+    System.out.println("Max: " + Lab1.max(values));
+    System.out.println("Min: " + Lab1.min(values));
+    System.out.println("Sum: " + Lab1.sum(values));
+    System.out.println("Average: " + Lab1.average(values));
+  }
+}
+
+// Add all of the methods here
+class Lab1 {
+
+  public static int max(int a, int b) {
+    if(a > b) return a; 
+    else return b; 
+  }
+
+  public static int min(int a, int b) {
+    if(a < b) return a; 
+    else return b;
+  }
+
+  public static int sum(int[] nums) {
+    int total = 0;
+    for (int num : nums) {
+      total += num;
+    }
+    return total;
+  }
+  public static double average(int[] nums) {
+    int total = 0;
+    for (int num : nums) {
+      total += num;
+    }
+    return (double) total / nums.length;
+  }
+  public static int max(int[] nums) {
+    int max = nums[0];
+    for (int num : nums) {
+      if (num > max) {
+        max = num;
+      }
+    }
+    return max;
+  }
+  
+  public static int min(int[] nums) {
+    int min = nums[0];
+    for (int num : nums) {
+      if (num < min) {
+        min = num;
+      }
+    }
+    return min;
+  }
+    
+  public static int increment(int num) {
+    return ++num;
+  }
+}
