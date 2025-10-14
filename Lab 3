@@ -2,7 +2,7 @@ public class Main {
   public static void main(String[] args) {
     String text = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     
-    String bestCase = "Doors Open";
+    String bestCase = "ABCD";
     long startTime = System.nanoTime();
     int index = match(text, bestCase);
     long endTime = System.nanoTime(); 
@@ -14,7 +14,7 @@ public class Main {
       System.out.println("best-case input unmatched");
     System.out.println("Best-case elapsed time (nanoseconds): " + elapsedTime);
 
-    String worstCase = "Doors Remain Closed";
+    String worstCase = "ABCDEFGHIJK";
     startTime = System.nanoTime(); 
     index = match(text, worstCase);
     endTime = System.nanoTime();
