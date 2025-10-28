@@ -1,0 +1,92 @@
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+
+public class Main {
+    public static void main(String[] args) {
+      System.out.println("Unsorted Array ---------------------------------------------------");
+      ArrayList<Integer> integerList = Lab4.getList();
+      Lab4.outputList(integerList);
+
+      System.out.println("\n\nBubble sort results ----------------------------------------------");
+      ArrayList<Integer> bubbleSortedList = Lab4.bubbleSort(integerList);
+      Lab4.outputList(bubbleSortedList);
+
+      System.out.println("\n\nInsertion sort results -------------------------------------------");
+      ArrayList<Integer> insertionSortedList = Lab4.insertionSort(integerList);  
+      Lab4.outputList(insertionSortedList);
+    }
+}
+
+class Lab4 {
+  public static ArrayList<Integer> insertionSort(ArrayList<Integer> integerList) {
+    // Step 1 - Implement insertion sort algorithm here
+    ArrayList<Integer> sortedList = new ArrayList<>(integerList);
+    for (int i = 1; i < sortedList.size(); i++) { 
+      int currentValue = sortedList.get(i);
+      int j = i - 1;
+      while (j >= 0 && sortedList.get(j) > currentValue) {
+        sortedList.set(j + 1 , sortedList.get(j));
+        j --;
+      }
+      sortedList.set(j + 1, currentValue);
+    }
+    return sortedList;
+  }
+
+  public static ArrayList<Integer> bubbleSort(ArrayList<Integer> integerList) {
+    // Step 2 - Implement the bubble sort algorithm here
+  ArrayList<Integer> sortedList = new ArrayList<>(integerList);
+    int n = sortedList.size();
+    for (int i = 0; i < n- 1; i++) {
+      for (int j = 0; j < n - i - 1; j++) {
+        if (sortedList.get(j) > sortedList.get(j + 1)) {
+          int temp = sortedList.get(j);
+          sortedList.set(j, sortedList.get(j + 1));
+          sortedList.set(j + 1, temp);
+        }
+      }
+    }
+    return sortedList;
+  }
+
+  public static ArrayList<Integer> getList() {
+    ArrayList<Integer> integerList = new ArrayList<>();
+    String line;
+    try (BufferedReader br = new BufferedReader(new FileReader("integers.txt"))) {
+        while ((line = br.readLine()) != null) {
+            integerList.add(Integer.parseInt(line));
+        }
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+    return integerList;
+  }
+
+  public static void outputList(ArrayList<Integer> integerList) {
+    for (int i = 0; i < integerList.size(); i++) {
+        System.out.print(integerList.get(i) + " ");
+    }
+  }
+}
+
+//1. If I were implementing a sort algorithm for a new programming language,
+//I would choose merge sort. It is reliable in performance in best and worst case scenario. 
+//It offers a consistent time complexity of O(n log n) in all 
+//cases—best, average, and worst—making it highly reliable for performance. 
+
+
+//2.There was a difference in execution time between bubble and insertion sort. Insertion sort
+//is faster than bubble sort but both have a worst case time complexity of 
+//O(n²),and insertion sort can terminate early if the array is already partially sorted.
+//Bubble sort can continue to do unecessary passes. 
+
+
+//3.To me, insertion sort has the easier implementation and seems to be more easy to
+//understand as well as come accross as simple and beginner friendly. It replicates how 
+//we would naturally, as humans, approach sorting. We would go through a list and 
+//move things (shift) until it is in order
+
+
+
